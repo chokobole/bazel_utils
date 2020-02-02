@@ -86,6 +86,12 @@ def if_windows(a, b = []):
         "//conditions:default": b,
     })
 
+def if_posix(a, b = []):
+    return select({
+        "@com_chokobole_bazel_utils//:windows": b,
+        "//conditions:default": a,
+    })
+
 def if_clang(a, b = []):
     return select({
         "@com_chokobole_bazel_utils//:clang": a,
